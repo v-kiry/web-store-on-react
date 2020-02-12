@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
+import { Global, css } from '@emotion/core';
+import './assets/fonts/fonts.css'
+
+import Header from './components/Header';
+import Main from './components/Main';
+
+const bodyFillColor = `#FAFAFA`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+     <Global styles={css`
+        body {
+          background: ${bodyFillColor};
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+          cursor: pointer;
+          color: inherit;
+          text-decoration: inherit;
+        }
+      `
+      }
+     />
+     <div>
+        <Header />
+        <Main />
+     </div>
+   </div>
   );
 }
 
-export default App;
+export default  App;
