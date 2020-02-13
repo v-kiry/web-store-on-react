@@ -2,6 +2,6 @@ import { css } from '@emotion/core'
 
 export default {
   sliderStyle:css`
-    width: 100%;
+    width: 100% ;
   `,
 }

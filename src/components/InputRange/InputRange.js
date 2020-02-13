@@ -12,18 +12,27 @@ const ShopSlider = withStyles({
       boxShadow: '0px 0px 0px 8px rgba(255, 192, 157, 0.35);',
     },
 
-    '&:focus': {
+    '&$active': {
       boxShadow: '0px 0px 0px 14px rgba(255, 192, 157, 0.35);',
-    }
+    },
+
+    '&$focusVisible': {
+      boxShadow: '0px 0px 0px 8px rgba(255, 192, 157, 0.35) !important;',
+    },
   },
+
+  focusVisible: {},
+
   active: {},
+
   valueLabel: {
     color: '#FFC09D',
   },
+
   track: {
-    height: 3,
     color: '#FFC09D',
   },
+
   rail: {
     color: '#d8d8d8',
   },
@@ -31,16 +40,21 @@ const ShopSlider = withStyles({
 
 export default function InputRange(props) {
 
+  function valueLabelFormat(value) {
+    return `$${value}`;
+  }
+
   return(
     <div css={styles.sliderStyle}>
       <ShopSlider
-        css={styles.marked}
         value={props.value}
         min={props.min}
         max={props.max}
+        step={25}
         onChange={props.onChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
+        valueLabelFormat={valueLabelFormat}
       />
     </div>
   )
