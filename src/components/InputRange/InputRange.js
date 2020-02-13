@@ -9,15 +9,15 @@ const ShopSlider = withStyles({
   thumb: {
     backgroundColor: '#FFC09D',
     '&:hover': {
-      boxShadow: '0px 0px 0px 8px rgba(255, 192, 157, 0.35);',
+      boxShadow: '0px 0px 0px 8px rgba(255, 192, 157, 0.16);',
     },
 
     '&$active': {
-      boxShadow: '0px 0px 0px 14px rgba(255, 192, 157, 0.35);',
+      boxShadow: '0px 0px 0px 14px rgba(255, 192, 157, 0.16);',
     },
 
     '&$focusVisible': {
-      boxShadow: '0px 0px 0px 8px rgba(255, 192, 157, 0.35) !important;',
+      boxShadow: '0px 0px 0px 8px rgba(255, 192, 157, 0.16) !important;',
     },
   },
 

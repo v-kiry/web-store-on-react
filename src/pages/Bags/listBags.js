@@ -29,7 +29,7 @@ export default [
   {
     "id": 24,
     "name": "Bag4",
-    "price": 400,
+    "price": 750,
     "img": {
       "imgName": "bag4",
       "imgUrl": require("../../assets/img/bag.png")

@@ -3,12 +3,13 @@ import { css } from '@emotion/core'
 export default {
   container: css`
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
-    padding: 5px 20px;
+    padding: 0px 20px;
     margin-bottom: 44px;
     min-height: 40px;
     background-color: white;
+    border: 1px solid #C4C4C4;
   `,
 
   inputText: css`
@@ -30,6 +31,22 @@ export default {
   inputImgSearch: css`
     display: block;
     margin-left: 5px;
+  `,
+
+  nameFilters: css`
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: bold;
+    font-size: 16px;
+    border-left: 1px solid #C4C4C4;
+    border-right: 1px solid #C4C4C4;
+
+    :first-of-type {
+      padding-left: 0;
+      border-left: 0;
+      margin-left: 0;
+    }
   `,
 
   wrapInputText: css`

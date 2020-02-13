@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styles from './CatalogFilters.style';
 import iconSearch from '../../assets/img/search.svg';
 import InputRange from '../InputRange'
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 export default function CatalogFilters(props) {
@@ -14,6 +15,11 @@ export default function CatalogFilters(props) {
   const maxValue = Math.max.apply(null, arrPrice)
   const [saveStateFilter, setSaveStateFilter] = useState(defaultList);
   const [value, setValue] = useState([minValue, maxValue]);
+  const [checked, setChecked] = useState(true);
+
+  const checkboxChange = event => {
+    setChecked(event.target.checked);
+  };
 
 
   const handelChange = (e, newValue) => {
@@ -40,10 +46,20 @@ export default function CatalogFilters(props) {
   }
   return(
     <div css={styles.container}>
+      <div css={styles.nameFilters}>Price range</div>
       <div css={styles.wrapInputRange}>
         <span css={styles.inputValues}>${minValue}</span>
         <InputRange min={minValue} max={maxValue} onChange={handelChange} value={value} />
         <span css={styles.inputValues}>${maxValue}</span>
+      </div>
+      <div css={styles.nameFilters}>Sex</div>
+      <div css={styles.nameFilters}>
+      <Checkbox
+        checked={checked}
+        onChange={checkboxChange}
+        value="primary"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
       </div>
       <div css={styles.wrapInputText}>
         <input css={styles.inputText} type="text" placeholder="Search" onChange={searchChange}/>
