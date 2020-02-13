@@ -23,7 +23,7 @@ export default function Catalog() {
   const [items, showMore] = useState(0);
   const [filteredListItems, setFilteredList] = useState(listItems)
   let itemsOnPage = items + 10;
-  let isAllItems  = itemsOnPage >= listItems.length;
+  let isAllItems  = itemsOnPage >= filteredListItems.length;
 
 
   return (

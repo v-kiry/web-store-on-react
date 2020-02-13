@@ -1,8 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { useState } from 'react';
+
 import styles from './CatalogFilters.style';
 import iconSearch from '../../assets/img/search.svg';
+import InputRange from '../InputRange'
+
 
 export default function CatalogFilters(props) {
   const defaultList = props.listItems;
@@ -10,16 +13,15 @@ export default function CatalogFilters(props) {
   const minValue = Math.min.apply(null, arrPrice)
   const maxValue = Math.max.apply(null, arrPrice)
   const [saveStateFilter, setSaveStateFilter] = useState(defaultList);
-  const [valueRange, setValueRange] = useState(maxValue);
+  const [value, setValue] = useState([minValue, maxValue]);
 
 
-  const handelChange = (e) => {
-    const {value} = e.currentTarget
+  const handelChange = (e, newValue) => {
     const clonedListItems = [...defaultList]
-    const newListItems = clonedListItems.filter(item => item.props.price <= value)
+    const newListItems = clonedListItems.filter(item => (newValue[0] <= item.props.price && item.props.price <= newValue[1]))
     props.onChange(newListItems)
     setSaveStateFilter(newListItems)
-    setValueRange(value)
+    setValue(newValue)
   }
 
   const searchChange = (e) => {
@@ -39,9 +41,9 @@ export default function CatalogFilters(props) {
   return(
     <div css={styles.container}>
       <div css={styles.wrapInputRange}>
-        <span>{minValue}$</span>
-        <input css={styles.inputRange} type="range" min={minValue} max={maxValue} step="25" defaultValue={maxValue} onChange={handelChange}/>
-        <span>{valueRange}$</span>
+        <span css={styles.inputValues}>${minValue}</span>
+        <InputRange min={minValue} max={maxValue} onChange={handelChange} value={value} />
+        <span css={styles.inputValues}>${maxValue}</span>
       </div>
       <div css={styles.wrapInputText}>
         <input css={styles.inputText} type="text" placeholder="Search" onChange={searchChange}/>

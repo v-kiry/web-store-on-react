@@ -12,7 +12,7 @@ export default function CartItem({id, name, price, img, count}) {
     dispatch('cart/changeCount', {id, name, price, img, count: value})
   }
 
-  let isMoreOne = count > 1
+  let isMoreOne = count <= 1
 
   return (
     <div css={styles.rowCart}>
