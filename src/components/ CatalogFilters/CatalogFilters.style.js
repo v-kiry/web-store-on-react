@@ -7,7 +7,7 @@ export default {
     justify-content: space-between;
     padding: 0px 20px;
     margin-bottom: 44px;
-    min-height: 40px;
+    min-height: 50px;
     background-color: white;
     border: 1px solid #C4C4C4;
   `,
@@ -35,6 +35,7 @@ export default {
 
   nameFilters: css`
     display: flex;
+    width: 100%;
     align-items: center;
     padding: 0 20px;
     font-weight: bold;
@@ -57,6 +58,7 @@ export default {
   wrapInputRange: css`
     width: 100%;
     max-width: 250px;
+    margin: 0 20px;
     display: flex;
     align-items:center;
     justify-content:space-between;
@@ -70,5 +72,13 @@ export default {
     :last-of-type {
       margin-left: 15px;
     }
+  `,
+
+  sortSexBlock: css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 20px;
   `,
 }

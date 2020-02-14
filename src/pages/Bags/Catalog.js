@@ -16,6 +16,7 @@ const listItems = listBags.map((item) =>
     name={item.name}
     price={item.price}
     img={item.img}
+    sex={item.sex}
   />
   );
 

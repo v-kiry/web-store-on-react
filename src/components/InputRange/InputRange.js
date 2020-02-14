@@ -50,7 +50,7 @@ export default function InputRange(props) {
         value={props.value}
         min={props.min}
         max={props.max}
-        step={25}
+        step={1}
         onChange={props.onChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"

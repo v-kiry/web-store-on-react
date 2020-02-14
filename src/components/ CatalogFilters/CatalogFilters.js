@@ -5,7 +5,7 @@ import { useState } from 'react';
 import styles from './CatalogFilters.style';
 import iconSearch from '../../assets/img/search.svg';
 import InputRange from '../InputRange'
-import Checkbox from '@material-ui/core/Checkbox';
+import { Checkbox } from '@material-ui/core';
 
 
 export default function CatalogFilters(props) {
@@ -15,15 +15,24 @@ export default function CatalogFilters(props) {
   const maxValue = Math.max.apply(null, arrPrice)
   const [saveStateFilter, setSaveStateFilter] = useState(defaultList);
   const [value, setValue] = useState([minValue, maxValue]);
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState('');
 
-  const checkboxChange = event => {
-    setChecked(event.target.checked);
+  const checkboxChange = (event) => {
+    if (event.currentTarget.checked) {
+      setChecked(event.currentTarget.value)
+      const clonedListItems = [...defaultList]
+      const newListItems = clonedListItems.filter(item => item.props.sex === event.currentTarget.value)
+      props.onChange(newListItems)
+      setSaveStateFilter(newListItems)
+    } else {
+      setChecked('')
+      props.onChange(saveStateFilter)
+      setSaveStateFilter(saveStateFilter)
+    }
   };
 
-
   const handelChange = (e, newValue) => {
-    const clonedListItems = [...defaultList]
+    const clonedListItems = [...saveStateFilter]
     const newListItems = clonedListItems.filter(item => (newValue[0] <= item.props.price && item.props.price <= newValue[1]))
     props.onChange(newListItems)
     setSaveStateFilter(newListItems)
@@ -44,6 +53,7 @@ export default function CatalogFilters(props) {
       props.onChange('Not found')
     }
   }
+
   return(
     <div css={styles.container}>
       <div css={styles.nameFilters}>Price range</div>
@@ -53,13 +63,23 @@ export default function CatalogFilters(props) {
         <span css={styles.inputValues}>${maxValue}</span>
       </div>
       <div css={styles.nameFilters}>Sex</div>
-      <div css={styles.nameFilters}>
-      <Checkbox
-        checked={checked}
-        onChange={checkboxChange}
-        value="primary"
-        inputProps={{ 'aria-label': 'primary checkbox' }}
-      />
+      <div css={styles.sortSexBlock}>
+        <div>
+          <Checkbox
+            checked={checked === 'male'}
+            onChange={checkboxChange}
+            value='male'
+          />
+          <span>Male</span>
+        </div>
+        <div>
+          <Checkbox
+            checked={checked === 'female'}
+            onChange={checkboxChange}
+            value='female'
+          />
+          <span>Female</span>
+        </div>
       </div>
       <div css={styles.wrapInputText}>
         <input css={styles.inputText} type="text" placeholder="Search" onChange={searchChange}/>
