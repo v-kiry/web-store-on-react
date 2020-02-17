@@ -72,29 +72,29 @@ export default function CatalogFilters(props) {
 
   return(
     <div css={styles.container}>
-      <div css={styles.nameFilters}>Price range</div>
-      <div css={styles.wrapInputRange}>
-        <span css={styles.inputValues}>${minValue}</span>
-        <InputRange min={minValue} max={maxValue} onChange={handelChange} value={value} />
-        <span css={styles.inputValues}>${maxValue}</span>
-      </div>
-      <div css={styles.nameFilters}>Sex</div>
-      <div css={styles.sortSexBlock}>
-        <div>
-          <Checkbox
-            checked={checked === 'male'}
-            onChange={checkboxChange}
-            value='male'
-          />
-          <span>Male</span>
+      <div css={styles.blockFilters}>
+        <span css={styles.nameFilters}>Price range</span>
+        <div css={styles.wrapInputRange}>
+          <span css={styles.inputValues}>${minValue}</span>
+          <InputRange min={minValue} max={maxValue} onChange={handelChange} value={value} />
+          <span css={styles.inputValues}>${maxValue}</span>
         </div>
-        <div>
-          <Checkbox
-            checked={checked === 'female'}
-            onChange={checkboxChange}
-            value='female'
-          />
-          <span>Female</span>
+      </div>
+      <div css={styles.blockFilters}>
+      <span css={styles.nameFilters}>Sex</span>
+        <div css={styles.sortSexBlock}>
+            <Checkbox
+              checked={checked === 'male'}
+              onChange={checkboxChange}
+              value='male'
+            />
+            <span>Male</span>
+            <Checkbox
+              checked={checked === 'female'}
+              onChange={checkboxChange}
+              value='female'
+            />
+            <span>Female</span>
         </div>
       </div>
       <div css={styles.wrapInputText}>

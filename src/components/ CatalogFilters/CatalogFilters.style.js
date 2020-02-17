@@ -5,7 +5,6 @@ export default {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    padding: 0px 20px;
     margin-bottom: 44px;
     min-height: 50px;
     background-color: white;
@@ -33,35 +32,47 @@ export default {
     margin-left: 5px;
   `,
 
-  nameFilters: css`
+  blockFilters: css`
     display: flex;
     width: 100%;
     align-items: center;
-    padding: 0 20px;
-    font-weight: bold;
-    font-size: 16px;
     border-left: 1px solid #C4C4C4;
-    border-right: 1px solid #C4C4C4;
 
     :first-of-type {
-      padding-left: 0;
       border-left: 0;
-      margin-left: 0;
+      border-right: 0;
+    }
+
+    :last-of-type {
+      border-left: 0;
+      border-right: 0;
     }
   `,
+
+    nameFilters: css`
+      display: flex;
+      padding: 0 20px;
+      height: 100%;
+      align-items: center;
+      border-right: 1px solid #C4C4C4;
+      font-size: 16px;
+      font-weight: bold;
+      white-space: nowrap;
+    `,
 
   wrapInputText: css`
     display: flex;
     align-items: center;
+    padding: 0 20px;
   `,
 
   wrapInputRange: css`
-    width: 100%;
-    max-width: 250px;
-    margin: 0 20px;
     display: flex;
     align-items:center;
     justify-content:space-between;
+    height:100%;
+    width: 100%;
+    padding: 0 20px;
   `,
 
   inputValues: css`
@@ -77,8 +88,8 @@ export default {
   sortSexBlock: css`
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
-    margin: 0 20px;
+    height: 100%;
+    padding: 0 20px;
   `,
 }
