@@ -6,12 +6,7 @@ export default {
     max-width: 215px;
     text-align: center;
     cursor: pointer;
-    margin-right: 3.7%;
     margin-bottom: 46px;
-
-    :nth-of-type(5n) {
-      margin-right:0
-    }
   `,
 
   imgItem:css`

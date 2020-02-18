@@ -19,9 +19,16 @@ export default {
   `,
 
   blockItems:css`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 215px);
+    justify-content: space-between;
+
+    @media (max-width: 550px) {
+      justify-content: center;
+    }
+
+    grid-column-gap:47px;
     min-height: 627px;
-    flex-wrap: wrap;
-    padding-bottom: 71px;
+    padding-bottom: 25px;
   `
 }
