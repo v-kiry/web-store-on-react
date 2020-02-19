@@ -30,5 +30,16 @@ export default {
     grid-gap:47px;
     min-height: 627px;
     padding-bottom: 71px;
-  `
+  `,
+
+  notFound:css`
+    display: block;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 59px;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    justify-self: center;
+    align-self: center;
+  `,
 }

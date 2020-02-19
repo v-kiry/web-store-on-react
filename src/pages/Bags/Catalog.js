@@ -33,9 +33,9 @@ export default function Catalog() {
         <span css={styles.catalogTitle}>Bags</span>
         <CatalogFilters onChange={(item) => setFilteredList(item)} listItems={listItems}/>
         <div css={styles.blockItems}>
-          {(filteredListItems !== false) ? filteredListItems.slice(0, itemsOnPage) : <div>Not found</div> }
+          { (filteredListItems !== false) ? filteredListItems.slice(0, itemsOnPage) : <div css={styles.notFound}>Not found</div> }
         </div>
-        {isAllItems ? false : <Button text='Show more' click={() => showMore(itemsOnPage)}/>}
+        { isAllItems ? false : <Button text='Show more' click={() => showMore(itemsOnPage)}/>  }
       </div>
     </div>
   );
