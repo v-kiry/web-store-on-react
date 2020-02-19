@@ -1,20 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { useState } from 'react';
+import InputRange from 'react-input-range';
 
 import styles from './CatalogFilters.style';
 import iconSearch from '../../assets/img/search.svg';
-import InputRange from '../InputRange'
-import { Checkbox } from '@material-ui/core';
-
+import Checkbox  from '../Checkbox';
 
 export default function CatalogFilters(props) {
   const defaultList = props.listItems;
   const arrPrice = valueMinMax(defaultList);
-  const [saveStateFilter, setSaveStateFilter] = useState(defaultList);
-  const [value, setValue] = useState(arrPrice);
   const minValue = arrPrice[0];
   const maxValue = arrPrice[1];
+  const [saveStateFilter, setSaveStateFilter] = useState(defaultList);
+  const [value, setValue] = useState({min: arrPrice[0], max: arrPrice[1]});
   const [checked, setChecked] = useState('');
 
   function valueMinMax(arr) {
@@ -27,32 +26,32 @@ export default function CatalogFilters(props) {
 
     if (event.currentTarget.checked) {
       setChecked(event.currentTarget.value)
-      const newListItems = clonedListItems.filter(item => (value[0] <= item.props.price && item.props.price <= value[1] && item.props.sex === event.currentTarget.value))
+      const newListItems = clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max && item.props.sex === event.currentTarget.value))
       const listIsEmpty = (newListItems.length === 0)
-      listIsEmpty ? props.onChange('Not found') : props.onChange(newListItems)
+      listIsEmpty ? props.onChange(false) : props.onChange(newListItems)
     } else {
       setChecked('')
-      props.onChange(clonedListItems.filter(item => (value[0] <= item.props.price && item.props.price <= value[1])))
-      setSaveStateFilter(clonedListItems.filter(item => (value[0] <= item.props.price && item.props.price <= value[1])))
+      props.onChange(clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max)))
+      setSaveStateFilter(clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max)))
     }
   };
 
-  console.log(checked)
-
-  const handelChange = (e, newValue) => {
+  const handelChange = (value) => {
     const clonedListItems = [...defaultList]
-
+    console.log(value)
     if (checked === '') {
-      const newListItems = clonedListItems.filter(item => (value[0] <= item.props.price && item.props.price <= value[1]))
-      props.onChange(newListItems)
+      const newListItems = clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max))
+      const listIsEmpty = (newListItems.length === 0)
+      listIsEmpty ? props.onChange(false) : props.onChange(newListItems)
       setSaveStateFilter(newListItems)
     } else {
-      const newListItems = clonedListItems.filter(item => (value[0] <= item.props.price && item.props.price <= value[1] && item.props.sex === checked))
-      props.onChange(newListItems)
+      const newListItems = clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max && item.props.sex === checked))
+      const listIsEmpty = (newListItems.length === 0)
+      listIsEmpty ? props.onChange(false) : props.onChange(newListItems)
       setSaveStateFilter(newListItems)
     }
 
-    setValue(newValue)
+    setValue(value)
   }
 
   const searchChange = (e) => {
@@ -66,7 +65,7 @@ export default function CatalogFilters(props) {
     if (isFind) {
       props.onChange(listSearchResults.map((item) => ({...item, props: {...item.props, name: item.props.name[0].toUpperCase() + item.props.name.slice(1)}})))
     } else {
-      props.onChange('Not found')
+      props.onChange(false)
     }
   }
 
@@ -76,7 +75,7 @@ export default function CatalogFilters(props) {
         <span css={styles.nameFilters}>Price range</span>
         <div css={styles.wrapInputRange}>
           <span css={styles.inputValues}>${minValue}</span>
-          <InputRange min={minValue} max={maxValue} onChange={handelChange} value={value} />
+          <InputRange minValue={minValue} maxValue={maxValue} formatLabel={value => `$${value}`} onChange={value => handelChange(value)} value={value}/>
           <span css={styles.inputValues}>${maxValue}</span>
         </div>
       </div>
@@ -87,14 +86,14 @@ export default function CatalogFilters(props) {
               checked={checked === 'male'}
               onChange={checkboxChange}
               value='male'
+              text='Male'
             />
-            <span>Male</span>
             <Checkbox
               checked={checked === 'female'}
               onChange={checkboxChange}
               value='female'
+              text='Female'
             />
-            <span>Female</span>
         </div>
       </div>
       <div css={styles.wrapInputText}>

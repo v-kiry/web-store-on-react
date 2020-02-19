@@ -27,8 +27,8 @@ export default {
       justify-content: center;
     }
 
-    grid-column-gap:47px;
+    grid-gap:47px;
     min-height: 627px;
-    padding-bottom: 25px;
+    padding-bottom: 71px;
   `
 }

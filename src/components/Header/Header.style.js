@@ -9,6 +9,7 @@ export default {
     z-index: 999;
     min-height: 60px;
     background-color: white;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
   `,
 
   container:css`
@@ -24,8 +25,8 @@ export default {
   burgerButton:css`
     display: none;
     margin-right: 20px;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
 
     @media (max-width: 900px) {
       display: block;
@@ -109,8 +110,8 @@ export default {
       align-items: flex-start;
       background-color: white;
       max-width: 60%;
-      transition: transform .3s ease-in-out;
       transform: translateX(-100%);
+      transition: transform .3s ease-in-out;
       height: 100vh;
     }
 

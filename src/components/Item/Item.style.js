@@ -6,7 +6,6 @@ export default {
     max-width: 215px;
     text-align: center;
     cursor: pointer;
-    margin-bottom: 46px;
   `,
 
   imgItem:css`
