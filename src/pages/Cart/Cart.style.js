@@ -54,6 +54,10 @@ export default {
     :first-of-type {
       padding-left: 25px;
     }
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   `,
 
   blockRows:css`

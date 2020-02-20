@@ -25,13 +25,17 @@ export default function CartItem({id, name, price, img, count}) {
         <span css={styles.nameItem}>{name}</span>
       </span>
       <span css={isMoreOne ? styles.colCart : styles.colCartMoreOne} style={{width: '20.9%', display: 'block'}}>
-        <div>{price*count}$</div>
-        {isMoreOne ? false : <div css={styles.priceItem}>{price}$ per item</div>}
+        <div css={styles.nameUnit}>Price</div>
+        <div>
+          <div>{price*count}$</div>
+          {isMoreOne ? false : <div css={styles.priceItem}>{price}$ per item</div>}
+        </div>
       </span>
       <span css={styles.colCart} style={{width: '38.45%'}}>
+        <div css={styles.nameUnit}>Quantity</div>
         <div css={styles.blockInput}>
           <input css={styles.input} type="number" min="1" defaultValue={count} onChange={handelChange}/>
-          <a css={styles.exit} onClick={() => dispatch('cart/del', id)}></a>
+          <div css={styles.exit} onClick={() => dispatch('cart/del', id)}></div>
         </div>
       </span>
     </div>
