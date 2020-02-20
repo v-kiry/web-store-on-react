@@ -29,6 +29,8 @@ export default {
   `,
 
   imgItem:css`
+    width: 216px;
+
     @media (max-width: 900px) {
       width: 81px;
     }

@@ -5,7 +5,7 @@ import useStoreon from 'storeon/react';
 import styles from './CartItem.style';
 
 export default function CartItem({id, name, price, img, count}) {
-  const { dispatch, products } = useStoreon('products');
+  const { dispatch } = useStoreon('products');
   const handelChange = (e) => {
     const {value} = e.currentTarget
     console.log(value)

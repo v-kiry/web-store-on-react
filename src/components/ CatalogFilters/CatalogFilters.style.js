@@ -57,7 +57,7 @@ export default {
     }
 
     @media (max-width: 1200px) {
-      min-height: 50px;
+      min-height: 40px;
       border-left: 0;
       border-bottom: 1px solid #C4C4C4;
     }
@@ -86,6 +86,7 @@ export default {
       border-right: 0;
       padding: 0;
       width: 100%;
+      min-height: 30px;
       justify-content: center;
       border-bottom: 1px solid #C4C4C4;
     }
@@ -97,7 +98,7 @@ export default {
     padding: 0 20px;
 
     @media (max-width: 1200px) {
-      min-height: 50px;
+      min-height: 40px;
       justify-content: flex-end;
     }
   `,
