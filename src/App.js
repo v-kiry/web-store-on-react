@@ -148,6 +148,7 @@ function App() {
           height: 1rem;
           position: relative;
           width: 100%;
+          margin: 0 20px;
         }
       `
       }

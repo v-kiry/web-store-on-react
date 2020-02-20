@@ -19,20 +19,20 @@ const listItems = listHats.map((item) =>
 );
 
 export default function Hats() {
-  const [items, showMore] = useState(0);
+  const [moreItems, setMoreItems] = useState(0);
   const [filteredListItems, setFilteredList] = useState(listItems)
-
-  let isAllItems = items + 10 >= listItems.length
+  let itemsOnPage = moreItems + 10;
+  let isAllItems  = itemsOnPage <= filteredListItems.length;
 
   return (
     <div>
       <div css={styles.container}>
-        <span css={styles.catalogTitle}>Hats</span>
+        <span css={styles.catalogTitle}>Bags</span>
         <CatalogFilters onChange={(item) => setFilteredList(item)} listItems={listItems}/>
         <div css={styles.blockItems}>
-          {filteredListItems.slice(0, 10 + items)}
+          { (filteredListItems !== false) ? filteredListItems.slice(0, itemsOnPage) : <div css={styles.notFound}>Not found</div> }
         </div>
-        {isAllItems ? false : <Button text='Show more' click={() => showMore(items + 10)}/>}
+        { (isAllItems && (filteredListItems !== false)) ?  <Button text='Show more' click={() => setMoreItems(itemsOnPage)} /> : false }
       </div>
     </div>
   );

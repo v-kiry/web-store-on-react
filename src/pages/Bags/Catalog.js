@@ -21,10 +21,10 @@ const listItems = listBags.map((item) =>
   );
 
 export default function Catalog() {
-  const [items, showMore] = useState(0);
+  const [moreItems, setMoreItems] = useState(0);
   const [filteredListItems, setFilteredList] = useState(listItems)
-  let itemsOnPage = items + 10;
-  let isAllItems  = itemsOnPage >= filteredListItems.length;
+  let itemsOnPage = moreItems + 10;
+  let isAllItems  = itemsOnPage <= filteredListItems.length;
 
 
   return (
@@ -35,7 +35,7 @@ export default function Catalog() {
         <div css={styles.blockItems}>
           { (filteredListItems !== false) ? filteredListItems.slice(0, itemsOnPage) : <div css={styles.notFound}>Not found</div> }
         </div>
-        { isAllItems ? false : <Button text='Show more' click={() => showMore(itemsOnPage)}/>  }
+        { (isAllItems && (filteredListItems !== false)) ?  <Button text='Show more' click={() => setMoreItems(itemsOnPage)} /> : false }
       </div>
     </div>
   );

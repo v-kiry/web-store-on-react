@@ -7,6 +7,7 @@ import styles from './CatalogFilters.style';
 import iconSearch from '../../assets/img/search.svg';
 import Checkbox  from '../Checkbox';
 
+
 export default function CatalogFilters(props) {
   const defaultList = props.listItems;
   const arrPrice = valueMinMax(defaultList);

@@ -4,6 +4,7 @@ export default {
   bodyCheckbox:css`
     display: flex;
     align-items: center;
+    margin-right: 25px;
   `,
 
   checkbox:css`
