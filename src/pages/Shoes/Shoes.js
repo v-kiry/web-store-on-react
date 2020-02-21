@@ -22,8 +22,9 @@ export default function Hats() {
   const [moreItems, setMoreItems] = useState(0);
   const [filteredListItems, setFilteredList] = useState(listItems)
   let itemsOnPage = moreItems + 10;
-  let isAllItems  = itemsOnPage <= filteredListItems.length;
-
+  let closeItem =  filteredListItems.length - filteredListItems.length;
+  let isAllItems  = filteredListItems.length <= itemsOnPage;
+  const isFound = ( (filteredListItems.length !== 10) && ( itemsOnPage !== 10) && ( filteredListItems !== false ) ) ? <Button text='Show less' click={() => setMoreItems(closeItem)}/> : false;
   return (
     <div>
       <div css={styles.container}>
@@ -32,7 +33,7 @@ export default function Hats() {
         <div css={styles.blockItems}>
           { (filteredListItems !== false) ? filteredListItems.slice(0, itemsOnPage) : <div css={styles.notFound}>Not found</div> }
         </div>
-        { (isAllItems && (filteredListItems !== false)) ?  <Button text='Show more' click={() => setMoreItems(itemsOnPage)} /> : false }
+        { (isAllItems && (filteredListItems === false)) ? <Button text='Show more' click={() => setMoreItems(itemsOnPage)}/> : isFound }
       </div>
     </div>
   );
