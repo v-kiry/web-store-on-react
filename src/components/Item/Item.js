@@ -5,7 +5,6 @@ import styles from './Item.style';
 
 export default function Item({id, name, price, sex, img}) {
   const { dispatch } = useStoreon('products');
-  const itemSex = sex;
 
   return(
     <div css={styles.blockItem} onClick={() => dispatch('cart/add', {id, name, price, img})}>

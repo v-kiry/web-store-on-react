@@ -21,24 +21,32 @@ const listItems = listBags.map((item) =>
   );
 
 export default function Catalog() {
-  const [moreItems, setMoreItems] = useState(0);
   const [filteredListItems, setFilteredList] = useState(listItems)
-  let itemsOnPage = moreItems + 10;
-  let closeItem =  filteredListItems.length - filteredListItems.length;
-  let isAllItems  = itemsOnPage <= filteredListItems.length;
+  const [moreItems, setMoreItems] = useState(10);
+  const itemsCount = ((filteredListItems.length - moreItems) > 10)  ?   10 : (filteredListItems.length % moreItems);
+  let isAllItems  = itemsCount !== 0;
 
-  const isFound = ((filteredListItems.length !== 10) && ( itemsOnPage !== 10) && ( filteredListItems !== false )) ?  <Button text='Show less' click={() => setMoreItems(closeItem)} /> : false;
+  function countMoreItems (value) {
+    if (value < 10) {
+      setMoreItems(filteredListItems.length)
+    } else {
+      setMoreItems(10)
+    }
+  }
 
-
+  console.log(" ")
+  console.log("itemsCount: ", itemsCount)
+  console.log("moreItems: ", moreItems)
+  console.log("filteredListItems.length: ", filteredListItems.length)
   return (
     <div>
       <div css={styles.container}>
         <span css={styles.catalogTitle}>Bags</span>
-        <CatalogFilters onChange={(item) => setFilteredList(item)} listItems={listItems}/>
+        <CatalogFilters onChange={(item) => {setFilteredList(item); countMoreItems(filteredListItems.length)}} listItems={listItems}/>
         <div css={styles.blockItems}>
-          { (filteredListItems !== false) ? filteredListItems.slice(0, itemsOnPage) : <div css={styles.notFound}>Not found</div> }
+          { (filteredListItems !== false) ? filteredListItems.slice(0, moreItems) : <div css={styles.notFound}>Not found</div> }
         </div>
-        { (isAllItems && (filteredListItems !== false)) ?  <Button text='Show more' click={() => setMoreItems(itemsOnPage)} /> : isFound }
+        { isAllItems && (filteredListItems !== false) && filteredListItems.length > 10 ?  <Button text='Show more' click={() => setMoreItems(moreItems + itemsCount)} /> : false }
       </div>
     </div>
   );

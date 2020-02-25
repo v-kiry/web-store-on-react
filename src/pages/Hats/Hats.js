@@ -24,7 +24,6 @@ export default function Hats() {
   let itemsOnPage = moreItems + 10;
   let closeItem =  filteredListItems.length - filteredListItems.length;
   let isAllItems  = itemsOnPage <= filteredListItems.length;
-
   const isFound = ( (filteredListItems.length !== 10) && ( itemsOnPage !== 10) && ( filteredListItems !== false )) ?  <Button text='Show less' click={() => setMoreItems(closeItem)} /> : false;
 
   return (

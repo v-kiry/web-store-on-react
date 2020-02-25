@@ -17,6 +17,10 @@ export default function CatalogFilters(props) {
   const [value, setValue] = useState({min: arrPrice[0], max: arrPrice[1]});
   const [checked, setChecked] = useState('');
 
+  const filterRange =  (arr) => {
+    return arr.filter(item => (value.min <= item.props.price && item.props.price <= value.max))
+  }
+
   function valueMinMax(arr) {
     const arrPrice = arr.map(item => item.props.price);
     return [Math.min.apply(null, arrPrice), Math.max.apply(null, arrPrice)];
@@ -30,23 +34,25 @@ export default function CatalogFilters(props) {
       const newListItems = clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max && item.props.sex === event.currentTarget.value))
       const listIsEmpty = (newListItems.length === 0)
       listIsEmpty ? props.onChange(false) : props.onChange(newListItems)
+      setSaveStateFilter(newListItems)
     } else {
       setChecked('')
-      props.onChange(clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max)))
-      setSaveStateFilter(clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max)))
+      props.onChange(filterRange(clonedListItems))
+      setSaveStateFilter(filterRange(clonedListItems))
     }
   };
 
   const handelChange = (value) => {
     const clonedListItems = [...defaultList]
     console.log(value)
+
     if (checked === '') {
-      const newListItems = clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max))
+      const newListItems = filterRange(clonedListItems)
       const listIsEmpty = (newListItems.length === 0)
       listIsEmpty ? props.onChange(false) : props.onChange(newListItems)
       setSaveStateFilter(newListItems)
     } else {
-      const newListItems = clonedListItems.filter(item => (value.min <= item.props.price && item.props.price <= value.max && item.props.sex === checked))
+      const newListItems = filterRange(clonedListItems).filter(item => (value.min <= item.props.price && item.props.price <= value.max && item.props.sex === checked))
       const listIsEmpty = (newListItems.length === 0)
       listIsEmpty ? props.onChange(false) : props.onChange(newListItems)
       setSaveStateFilter(newListItems)
@@ -54,7 +60,7 @@ export default function CatalogFilters(props) {
 
     setValue(value)
   }
-
+  console.log(value)
   const searchChange = (e) => {
     const {value} = e.currentTarget
     const clonedItems = [...saveStateFilter]
@@ -76,7 +82,7 @@ export default function CatalogFilters(props) {
         <span css={styles.nameFilters}>Price range</span>
         <div css={styles.wrapInputRange}>
           <span css={styles.inputValues}>${minValue}</span>
-          <InputRange minValue={minValue} maxValue={maxValue} formatLabel={value => `$${value}`} onChange={value => handelChange(value)} value={value}/>
+          <InputRange minValue={minValue} maxValue={maxValue} formatLabel={value => `$${value}`} step={25} value={value} onChange={value => handelChange(value)}/>
           <span css={styles.inputValues}>${maxValue}</span>
         </div>
       </div>

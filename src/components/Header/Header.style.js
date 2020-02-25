@@ -42,6 +42,7 @@ export default {
         margin-top: 11px;
         margin-bottom: 5px;
       }
+
       :nth-of-type(2) {
         margin-top: 5px;
         margin-bottom: 11px;
