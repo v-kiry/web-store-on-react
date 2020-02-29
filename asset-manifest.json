@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/web-store-on-reac/static/css/main.937a5b74.chunk.css",
+    "main.js": "/web-store-on-reac/static/js/main.f5a4a3f8.chunk.js",
+    "main.js.map": "/web-store-on-reac/static/js/main.f5a4a3f8.chunk.js.map",
+    "runtime-main.js": "/web-store-on-reac/static/js/runtime-main.1b71a7a0.js",
+    "runtime-main.js.map": "/web-store-on-reac/static/js/runtime-main.1b71a7a0.js.map",
+    "static/css/2.764ccc25.chunk.css": "/web-store-on-reac/static/css/2.764ccc25.chunk.css",
+    "static/js/2.21803523.chunk.js": "/web-store-on-reac/static/js/2.21803523.chunk.js",
+    "static/js/2.21803523.chunk.js.map": "/web-store-on-reac/static/js/2.21803523.chunk.js.map",
+    "index.html": "/web-store-on-reac/index.html",
+    "precache-manifest.4f3205b7a4c6435dfd67bf2c0f72c0b1.js": "/web-store-on-reac/precache-manifest.4f3205b7a4c6435dfd67bf2c0f72c0b1.js",
+    "service-worker.js": "/web-store-on-reac/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/web-store-on-reac/static/css/2.764ccc25.chunk.css.map",
+    "static/css/main.937a5b74.chunk.css.map": "/web-store-on-reac/static/css/main.937a5b74.chunk.css.map",
+    "static/js/2.21803523.chunk.js.LICENSE": "/web-store-on-reac/static/js/2.21803523.chunk.js.LICENSE",
+    "static/media/bag.png": "/web-store-on-reac/static/media/bag.ffb4866d.png",
+    "static/media/search.svg": "/web-store-on-reac/static/media/search.a88f7755.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1b71a7a0.js",
+    "static/css/2.764ccc25.chunk.css",
+    "static/js/2.21803523.chunk.js",
+    "static/css/main.937a5b74.chunk.css",
+    "static/js/main.f5a4a3f8.chunk.js"
+  ]
+}
